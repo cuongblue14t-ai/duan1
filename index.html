@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CV cá nhân của Dương Mạnh Cường">
-    <title>CV | Dương Mạnh Cường</title>
+    <title>CV - Dương Mạnh Cường | Web Developer</title>
     <style>
         :root {
-            --navy: #14263d;
-            --blue: #2878c8;
-            --pale: #eef4fa;
-            --ink: #263445;
-            --muted: #64748b;
+            --navy: #132238;
+            --blue: #1976d2;
+            --light-blue: #eaf3fc;
+            --text: #263445;
+            --muted: #637286;
             --line: #dce5ef;
+            --paper: #ffffff;
         }
 
         * {
@@ -22,389 +22,546 @@
 
         body {
             margin: 0;
-            background: #e8edf3;
-            color: var(--ink);
-            font: 15px/1.65 "Segoe UI", Arial, sans-serif;
+            padding: 28px 14px;
+            background: #edf1f5;
+            color: var(--text);
+            font: 14px/1.55 "Segoe UI", Arial, sans-serif;
         }
 
-        .page {
-            width: min(100% - 32px, 1000px);
-            margin: 32px auto;
-            background: white;
-            box-shadow: 0 18px 50px rgba(20, 38, 61, .13);
+        .toolbar {
+            max-width: 980px;
+            margin: 0 auto 14px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .toolbar button {
+            border: 0;
+            border-radius: 8px;
+            padding: 10px 16px;
+            color: #fff;
+            background: var(--blue);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .toolbar button.secondary {
+            background: var(--navy);
+        }
+
+        .cv {
+            max-width: 980px;
+            min-height: 1120px;
+            margin: auto;
+            background: var(--paper);
             display: grid;
-            grid-template-columns: 310px 1fr;
-            min-height: 1100px;
+            grid-template-columns: 290px 1fr;
+            box-shadow: 0 12px 38px rgba(19, 34, 56, .13);
         }
 
         aside {
             background: var(--navy);
-            color: #f7faff;
-            padding: 38px 28px;
+            color: #eef5ff;
+            padding: 34px 25px;
         }
 
-        .avatar {
-            width: 118px;
-            height: 118px;
-            margin: 0 auto 20px;
-            border: 3px solid #8fc5ff;
+        .monogram {
+            width: 88px;
+            height: 88px;
             border-radius: 50%;
-            background: #294361;
             display: grid;
             place-items: center;
-            font-size: 38px;
+            margin: 0 0 22px;
+            border: 2px solid #83baf1;
+            background: rgba(255, 255, 255, .08);
+            color: #fff;
+            font-size: 28px;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
-        .side-name {
-            text-align: center;
-            font-size: 23px;
-            line-height: 1.25;
-            margin: 0;
-        }
-
-        .side-role {
-            text-align: center;
-            color: #9fcfff;
-            margin: 10px 0 30px;
-            font-weight: 600;
-        }
-
-        .side-section {
-            margin-top: 28px;
-        }
-
-        .side-section h2,
-        main h2 {
+        aside h2 {
+            margin: 26px 0 12px;
+            color: #91c8ff;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            font-size: 14px;
-            margin: 0 0 14px;
-        }
-
-        .side-section h2 {
-            color: #9fcfff;
-            border-bottom: 1px solid #40536b;
-            padding-bottom: 8px;
         }
 
         .contact-item {
-            margin: 10px 0;
+            margin: 0 0 11px;
             overflow-wrap: anywhere;
         }
 
-        .contact-item span {
+        .contact-item b {
             display: block;
-            color: #9fb0c5;
-            font-size: 12px;
+            color: #91c8ff;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: .7px;
+            letter-spacing: .8px;
         }
 
-        .side-section p {
-            margin: 8px 0;
-            color: #e1eaf5;
+        aside a {
+            color: #eef5ff;
+            text-decoration: none;
         }
 
         .skill {
-            margin: 13px 0;
+            margin: 0 0 10px;
         }
 
         .skill-label {
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
+            gap: 8px;
+            margin-bottom: 4px;
         }
 
-        .track {
-            height: 6px;
-            background: #40536b;
-            border-radius: 20px;
-            margin-top: 6px;
+        .bar {
+            height: 5px;
+            border-radius: 5px;
+            background: #34475e;
             overflow: hidden;
         }
 
-        .fill {
+        .bar span {
+            display: block;
             height: 100%;
-            background: #71b9ff;
-            border-radius: 20px;
+            border-radius: inherit;
+            background: #78baff;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 19px;
+            margin: 0 0 7px;
+        }
+
+        .check-list li::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: "✓";
+            color: #91c8ff;
+            font-weight: 800;
+        }
+
+        .check-list li.pending::before {
+            content: "○";
+            color: #a8b6c8;
         }
 
         main {
-            padding: 45px 42px;
-        }
-
-        .intro {
-            border-bottom: 2px solid var(--blue);
-            padding-bottom: 24px;
-            margin-bottom: 28px;
+            padding: 40px 38px 34px;
         }
 
         .eyebrow {
             color: var(--blue);
             text-transform: uppercase;
+            font-weight: 800;
             letter-spacing: 2px;
             font-size: 12px;
-            font-weight: 800;
         }
 
         h1 {
+            margin: 6px 0 2px;
             color: var(--navy);
-            font-size: clamp(30px, 4vw, 42px);
-            line-height: 1.12;
-            margin: 8px 0 10px;
+            font-size: 35px;
+            line-height: 1.15;
+            letter-spacing: -.6px;
         }
 
-        .headline {
-            color: var(--muted);
+        .job-title {
             font-size: 17px;
-            margin: 0;
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
-        main h2 {
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-
-        main h2::before {
-            content: "";
-            width: 5px;
-            height: 20px;
-            border-radius: 3px;
-            background: var(--blue);
+        .intro {
+            color: #4b5b6e;
+            margin: 0 0 20px;
         }
 
         section {
-            margin: 26px 0;
+            margin-top: 25px;
         }
 
-        .summary {
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 13px;
+            color: var(--navy);
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.1px;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: var(--line);
+        }
+
+        .goal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .goal-card {
+            background: #f5f8fc;
+            border-left: 3px solid var(--blue);
+            padding: 12px 13px;
+            border-radius: 0 7px 7px 0;
+        }
+
+        .goal-card h3 {
+            margin: 0 0 5px;
+            font-size: 12px;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: .7px;
+        }
+
+        .goal-card p {
             margin: 0;
-            color: #465568;
+            font-size: 12.5px;
         }
 
         .entry {
-            margin: 0 0 22px;
-            padding-left: 17px;
-            border-left: 2px solid var(--line);
+            margin-bottom: 16px;
+        }
+
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: baseline;
         }
 
         .entry h3 {
             margin: 0;
-            font-size: 16px;
-            color: #20334b;
+            color: var(--navy);
+            font-size: 15px;
         }
 
-        .meta {
+        .date {
             color: var(--blue);
-            font-size: 13px;
             font-weight: 700;
-            margin: 3px 0 8px;
+            font-size: 12px;
+            white-space: nowrap;
         }
 
-        .entry p {
+        .subline {
+            color: var(--muted);
+            font-size: 12.5px;
+            margin: 3px 0 7px;
+        }
+
+        p {
             margin: 6px 0;
-            color: #526174;
         }
 
-        ul {
-            padding-left: 19px;
-            margin: 8px 0;
-            color: #526174;
+        ul.details {
+            padding-left: 18px;
+            margin: 7px 0;
         }
 
-        li {
-            margin: 4px 0;
+        ul.details li {
+            padding-left: 2px;
+            margin: 0 0 5px;
         }
 
-        .tag-list {
+        .tag-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
+            margin-top: 8px;
         }
 
         .tag {
-            background: var(--pale);
-            color: #285b8d;
-            border: 1px solid #d7e7f7;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-size: 13px;
+            background: var(--light-blue);
+            color: #145ca2;
+            border-radius: 5px;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 700;
         }
 
         .note {
-            font-size: 12px;
+            color: var(--muted);
+            font-size: 11.5px;
+            font-style: italic;
+        }
+
+        .language-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .language-line strong {
+            color: var(--navy);
+        }
+
+        footer {
+            margin-top: 28px;
+            border-top: 1px solid var(--line);
+            padding-top: 10px;
             color: #7b8796;
-            margin-top: 30px;
+            font-size: 10.5px;
+            text-align: center;
         }
 
         @media (max-width: 720px) {
-            .page {
-                grid-template-columns: 1fr;
+            body {
+                padding: 0;
+            }
+
+            .toolbar {
+                padding: 12px;
                 margin: 0;
-                width: 100%;
             }
 
-            aside {
-                padding: 30px 24px;
+            .cv {
+                display: block;
+                min-height: 0;
             }
 
+            aside,
             main {
-                padding: 32px 24px;
+                padding: 26px 22px;
             }
 
-            .side-section {
-                margin-top: 22px;
+            h1 {
+                font-size: 30px;
             }
+
+            .goal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .entry-head {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 1px;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
         }
 
         @media print {
             body {
-                background: white;
+                padding: 0;
+                background: #fff;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
 
-            .page {
-                width: 100%;
+            .toolbar {
+                display: none;
+            }
+
+            .cv {
+                max-width: none;
+                width: 210mm;
+                min-height: 297mm;
                 margin: 0;
                 box-shadow: none;
+                grid-template-columns: 68mm 1fr;
             }
 
-            @page {
-                size: A4;
-                margin: 10mm;
+            aside {
+                padding: 10mm 7mm;
+            }
+
+            main {
+                padding: 11mm 9mm 8mm;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            body {
+                font-size: 11px;
+            }
+
+            .intro {
+                margin-bottom: 12px;
+            }
+
+            section {
+                margin-top: 17px;
+            }
+
+            .goal-card p {
+                font-size: 10.5px;
+            }
+
+            .entry {
+                margin-bottom: 11px;
+            }
+
+            .monogram {
+                width: 70px;
+                height: 70px;
+                font-size: 23px;
+            }
+
+            a {
+                color: inherit;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="page">
+    <div class="toolbar">
+        <button class="secondary" onclick="window.print()">In / Lưu PDF</button>
+        <button onclick="document.getElementById('contact-email').focus()">Kiểm tra thông tin</button>
+    </div>
+    <div class="cv">
         <aside>
-            <div class="avatar" aria-label="Chữ viết tắt DMC">DMC</div>
-            <h2 class="side-name">Dương Mạnh Cường</h2>
-            <p class="side-role">Ứng viên Công nghệ thông tin</p>
+            <div class="monogram" aria-label="Chữ viết tắt DMC">DMC</div>
+            <h2>Thông tin cá nhân</h2>
+            <div class="contact-item"><b>Ngày sinh</b>24/01/2005</div>
+            <div class="contact-item"><b>Giới tính</b>Nam</div>
+            <div class="contact-item"><b>Điện thoại</b>0394727XXX</div>
+            <div class="contact-item"><b>Email</b><a id="contact-email"
+                    href="mailto:cuongblue14t@gmail.com">cuongblue14t@gmail.com</a></div>
+            <div class="contact-item"><b>Địa chỉ</b>TP. Hà Nội</div>
+            <div class="contact-item"><b>GitHub / Website</b><a href="https://github.com/cuongblue14t-ai"
+                    target="_blank" rel="noopener">github.com/cuongblue14t-ai</a></div>
 
-            <div class="side-section">
-                <h2>Thông tin liên hệ</h2>
-                <div class="contact-item"><span>Điện thoại</span>0394727703
-                    <div class="contact-item"><span>Email</span>cuongblue14t@gmail.com
-                        <div class="contact-item"><span>Địa chỉ</span>Thái Nguyên, Việt Nam</div>
-                        <div class="contact-item"><span>GitHub / Portfolio</span>Thêm liên kết của bạn</div>
-                    </div>
+            <h2>Kỹ năng chuyên môn</h2>
+            <div class="skill">
+                <div class="skill-label"><span>HTML / CSS</span><span>Đang học</span></div>
+                <div class="bar"><span style="width:72%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-label"><span>JavaScript</span><span>Cơ bản</span></div>
+                <div class="bar"><span style="width:45%"></span></div>
+            </div>
+            <p class="note" style="color:#b9c7d8">Mức thể hiện mang tính tham khảo; hãy điều chỉnh theo năng lực thực
+                tế.</p>
 
-                    <div class="side-section">
-                        <h2>Kỹ năng</h2>
-                        <div class="skill">
-                            <div class="skill-label"><span>HTML &amp; CSS</span><span>Khá</span></div>
-                            <div class="track">
-                                <div class="fill" style="width:72%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <div class="skill-label"><span>JavaScript</span><span>Cơ bản</span></div>
-                            <div class="track">
-                                <div class="fill" style="width:48%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <div class="skill-label"><span>Cơ sở dữ liệu</span><span>Cơ bản</span></div>
-                            <div class="track">
-                                <div class="fill" style="width:50%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <div class="skill-label"><span>Git / GitHub</span><span>Cơ bản</span></div>
-                            <div class="track">
-                                <div class="fill" style="width:45%"></div>
-                            </div>
-                        </div>
-                    </div>
+            <h2>Công cụ & kỹ năng khác</h2>
+            <ul class="check-list">
+                <li>Git và GitHub</li>
+                <li class="pending">Cơ sở dữ liệu SQL</li>
+                <li class="pending">Thiết kế giao diện website</li>
+                <li class="pending">C/C++ hoặc Java</li>
+                <li class="pending">Python cơ bản</li>
+            </ul>
 
-                    <div class="side-section">
-                        <h2>Điểm mạnh</h2>
-                        <p>• Ham học hỏi, chủ động</p>
-                        <p>• Có tinh thần trách nhiệm</p>
-                        <p>• Làm việc nhóm và tự học</p>
-                        <p>• Sẵn sàng tiếp thu góp ý</p>
-                    </div>
+            <h2>Kỹ năng mềm</h2>
+            <ul class="check-list">
+                <li>Giao tiếp</li>
+                <li>Làm việc nhóm</li>
+                <li>Quản lý thời gian</li>
+                <li>Tư duy logic & giải quyết vấn đề</li>
+                <li>Tinh thần tự học</li>
+                <li>Chủ động và có trách nhiệm</li>
+                <li>Khả năng thích nghi</li>
+            </ul>
 
-                    <div class="side-section">
-                        <h2>Ngôn ngữ</h2>
-                        <p>Tiếng Việt: Bản ngữ</p>
-                        <p>Tiếng Anh: Điền trình độ thực tế</p>
-                    </div>
+            <h2>Ngoại ngữ</h2>
+            <div class="language-line"><strong>Tiếng Anh</strong><span>IELTS 3.6</span></div>
         </aside>
 
         <main>
-            <header class="intro">
+            <header>
                 <div class="eyebrow">Curriculum Vitae</div>
                 <h1>DƯƠNG MẠNH CƯỜNG</h1>
-                <p class="headline">Sinh viên / Ứng viên ngành Công nghệ thông tin</p>
+                <div class="job-title">Web Developer · Sinh viên CNTT</div>
+                <p class="intro">Sinh viên Công nghệ thông tin có tinh thần ham học hỏi, tư duy logic và định hướng phát
+                    triển website. Chủ động trau dồi kiến thức, tích lũy kinh nghiệm qua dự án thực tế và sẵn sàng tiếp
+                    cận công nghệ mới. Mong muốn phát triển chuyên môn vững vàng và đóng góp tích cực cho doanh nghiệp.
+                </p>
             </header>
 
             <section>
-                <h2>Giới thiệu bản thân</h2>
-                <p class="summary">Tôi là người yêu thích công nghệ và phát triển website, có tinh thần học hỏi và mong
-                    muốn vận dụng kiến thức vào các dự án thực tế. Tôi đang trau dồi kỹ năng lập trình, tư duy giải
-                    quyết vấn đề và quy trình làm việc để phát triển chuyên môn lâu dài.</p>
-            </section>
-
-            <section>
-                <h2>Mục tiêu nghề nghiệp</h2>
-                <div class="entry">
-                    <h3>Ngắn hạn</h3>
-                    <p>Củng cố kiến thức HTML, CSS, JavaScript, cơ sở dữ liệu và Git; hoàn thành các dự án cá nhân có
-                        giao diện rõ ràng, hoạt động ổn định.</p>
-                </div>
-                <div class="entry">
-                    <h3>Dài hạn</h3>
-                    <p>Phát triển thành lập trình viên web chuyên nghiệp, có khả năng xây dựng và bảo trì sản phẩm hoàn
-                        chỉnh, đồng thời đóng góp hiệu quả cho đội ngũ.</p>
+                <h2 class="section-title">Mục tiêu nghề nghiệp</h2>
+                <div class="goal-grid">
+                    <div class="goal-card">
+                        <h3>Ngắn hạn</h3>
+                        <p>Vận dụng kiến thức đã học vào dự án thực tế, nâng cao kỹ năng lập trình và phát triển
+                            website. Tìm kiếm cơ hội thực tập hoặc làm việc trong môi trường chuyên nghiệp để tích lũy
+                            kinh nghiệm, rèn luyện làm việc nhóm và hoàn thiện năng lực chuyên môn.</p>
+                    </div>
+                    <div class="goal-card">
+                        <h3>Dài hạn</h3>
+                        <p>Trở thành lập trình viên chuyên nghiệp, có kiến thức chuyên môn vững vàng và khả năng phát
+                            triển, triển khai sản phẩm phần mềm chất lượng. Không ngừng cập nhật công nghệ, nâng cao khả
+                            năng giải quyết vấn đề và hướng tới các vị trí có trách nhiệm cao hơn.</p>
+                    </div>
                 </div>
             </section>
 
             <section>
-                <h2>Học vấn</h2>
+                <h2 class="section-title">Học vấn</h2>
                 <div class="entry">
-                    <h3>[Tên trường / cơ sở đào tạo]</h3>
-                    <div class="meta">[Chuyên ngành] · [Năm bắt đầu – năm dự kiến tốt nghiệp]</div>
-                    <p>Điền các môn học, thành tích hoặc chứng chỉ liên quan nếu có.</p>
+                    <div class="entry-head">
+                        <h3>Trường Đại học Công nghệ Thông tin và Truyền thông – Đại học Thái Nguyên (ICTU)</h3>
+                        <span class="date">2023 – 2027</span>
+                    </div>
+                    <div class="subline">Chuyên ngành: Công nghệ thông tin</div>
+                    <p>Định hướng phát triển kỹ năng lập trình và xây dựng website, kết hợp kiến thức nền tảng với thực
+                        hành qua các dự án.</p>
                 </div>
             </section>
 
             <section>
-                <h2>Dự án tiêu biểu</h2>
+                <h2 class="section-title">Dự án tiêu biểu</h2>
                 <div class="entry">
-                    <h3>Website bán PC và linh kiện máy tính</h3>
-                    <div class="meta">Dự án cá nhân / học tập · [Thời gian thực hiện]</div>
-                    <ul>
-                        <li>Xây dựng giao diện cửa hàng trực tuyến, danh sách sản phẩm và trang chi tiết sản phẩm.</li>
-                        <li>Thiết kế luồng đăng nhập, phân quyền người dùng và quy trình mua hàng.</li>
-                        <li>Tìm hiểu quản lý dữ liệu sản phẩm, giỏ hàng và thống kê bán hàng.</li>
-                        <li>Công nghệ sử dụng: [Điền đúng công nghệ thực tế của dự án].</li>
+                    <div class="entry-head">
+                        <h3>Website bán PC và linh kiện máy tính</h3>
+                        <span class="date">06/2026 – 08/2026</span>
+                    </div>
+                    <div class="subline">Dự án thực hành cá nhân / nhóm · Phát triển website</div>
+                    <p><strong>Mô tả:</strong> Xây dựng website hỗ trợ người dùng tìm kiếm, xem thông tin sản phẩm máy
+                        tính và quản lý quy trình mua hàng.</p>
+                    <p><strong>Công nghệ:</strong></p>
+                    <div class="tag-row">
+                        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+                        <span class="tag">Backend: cần bổ sung</span><span class="tag">Database: cần bổ sung</span><span
+                            class="tag">Git/GitHub</span>
+                    </div>
+                    <p><strong>Nhiệm vụ thực hiện</strong></p>
+                    <ul class="details">
+                        <li>Xây dựng giao diện website bán PC và linh kiện máy tính.</li>
+                        <li>Phát triển chức năng hiển thị, tìm kiếm và xem chi tiết sản phẩm.</li>
+                        <li>Xây dựng chức năng đăng nhập, giỏ hàng và quản lý đơn hàng.</li>
+                        <li>Phát triển trang quản trị để quản lý sản phẩm và theo dõi trạng thái đơn hàng.</li>
+                        <li>Kiểm thử chức năng, phát hiện và sửa lỗi trong quá trình phát triển.</li>
                     </ul>
-                </div>
-                <div class="entry">
-                    <h3>[Tên dự án khác nếu có]</h3>
-                    <div class="meta">[Vai trò] · [Thời gian]</div>
-                    <p>Mô tả ngắn mục tiêu, phần việc bạn phụ trách và kết quả đạt được.</p>
+                    <p><strong>Kết quả:</strong> Hoàn thiện các chức năng trong phạm vi dự án; củng cố kiến thức phát
+                        triển website, cơ sở dữ liệu và kỹ năng giải quyết vấn đề.</p>
+                    <p class="note">Lưu ý: Chỉ giữ các chức năng và công nghệ mà bạn thực sự đã triển khai. Bổ sung
+                        backend, hệ quản trị cơ sở dữ liệu, vai trò trong nhóm và liên kết demo/mã nguồn nếu có.</p>
                 </div>
             </section>
 
             <section>
-                <h2>Kỹ năng chuyên môn</h2>
-                <div class="tag-list">
-                    <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
-                    <span class="tag">Responsive Design</span><span class="tag">Git / GitHub</span>
-                    <span class="tag">SQL / Database</span><span class="tag">Debug cơ bản</span>
-                </div>
-                <p class="note">Lưu ý: Hãy chỉnh sửa các mục trong ngoặc vuông và thông tin liên hệ theo dữ liệu thực tế
-                    trước khi gửi CV.</p>
+                <h2 class="section-title">Định hướng phát triển</h2>
+                <p>Tập trung củng cố nền tảng HTML, CSS, JavaScript; tiếp tục thực hành Git/GitHub và kiến thức cơ sở dữ
+                    liệu để từng bước phát triển các website hoàn chỉnh, dễ sử dụng và dễ bảo trì.</p>
             </section>
+            <footer>DUONG MANH CUONG · WEB DEVELOPER CV</footer>
         </main>
     </div>
 </body>
